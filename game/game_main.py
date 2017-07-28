@@ -383,5 +383,5 @@ if __name__ == '__main__':
     new_test = Game_Engine('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
     # new_test.rl.load_model("models/2017-07-28-12-02-07")
     # new_test.prompt_user()
-    # new_test.train_stockfish()
-    new_test.train_heuristic()
+    new_test.train_stockfish()
+    # new_test.train_heuristic()

@@ -10,11 +10,11 @@ def build_model():
     model.add(Dropout(0.5))
     model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.5))
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(1, activation='linear'))
 
     start = time.time()
-    model.compile(loss='binary_crossentropy',
-              optimizer='rmsprop',
+    model.compile(loss='mse',
+              optimizer='adam',
               metrics=['accuracy'])    
     print "Compilation Time : ", time.time() - start
     return model

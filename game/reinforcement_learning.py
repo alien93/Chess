@@ -54,6 +54,7 @@ class ReinforcementLearning(object):
             moves.append(str(move))
             inputs.append(self.fen_to_binary(board.fen(move)))
         predicted = self.model.predict(inputs, verbose=1)
+        print ("Predicted: ", predicted)
         max_predicted_idx = np.argmax(predicted)
         best_move = moves[max_predicted_idx]
         return best_move
