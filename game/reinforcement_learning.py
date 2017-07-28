@@ -25,7 +25,6 @@ class ReinforcementLearning(object):
         for move in board.legal_moves:
             inputs.append(self.fen_to_binary(board.fen(move)))
             self.engine.go(searchmoves = [move], movetime=200)
-            self.engine.go(searchmoves = [move], movetime=200)
             outputs.append(round(self.handler.info['score'][1].cp/100.0,2))
 
         #reward_value = np.array([reward_value])
