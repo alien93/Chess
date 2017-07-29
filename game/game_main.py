@@ -53,6 +53,9 @@ class Game_Engine():
                     print("You surrendered.")
                     break;
                 self.game.apply_move(user_move)
+                # train
+                current_state = str(self.game)
+                self.rl.train_stockfish(current_state)
                 captured = self.captured_pieces(str(self.game))
                 start_time = time.time()
                 self.computer.print_board(str(self.game), captured)
@@ -79,6 +82,8 @@ class Game_Engine():
                     print("\033[1mNodes found in cache:\033[0m \033[93m{}\033[0m".format(self.computer.found_in_cache))
                     print("\033[1mElapsed time in sec:\033[0m  \033[93m{time}\033[0m".format(time=time.time() - start_time))
                     self.game.apply_move(computer_move)
+                    current_state = str(self.game)
+                    self.rl.train_stockfish(current_state)
                 captured = self.captured_pieces(str(self.game))
                 self.computer.print_board(str(self.game), captured)
             user_move = raw_input("Game over. Play again? y/n: ")
@@ -382,6 +387,6 @@ class AI():
 if __name__ == '__main__':
     new_test = Game_Engine('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
     # new_test.rl.load_model("models/2017-07-28-12-02-07")
-    # new_test.prompt_user()
-    new_test.train_stockfish()
+    new_test.prompt_user()
+    # new_test.train_stockfish()
     # new_test.train_heuristic()
